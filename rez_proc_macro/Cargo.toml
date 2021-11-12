@@ -1,0 +1,12 @@
+[package]
+# Unfortuantely Cargo doesn't allow Unicode characters in crate names
+name = "rez"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[lib]
+proc-macro = true

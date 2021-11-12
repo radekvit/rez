@@ -1,0 +1,32 @@
+name: rez
+
+on:
+  push:
+    branches: [hlavni]
+  pull_request:
+    branches: [hlavni]
+
+jobs:
+  ic:
+    env:
+      RUST_BACKTRACE: 1
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust:
+          - stable
+          - nightly
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+
+      - name: rez exemple
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
